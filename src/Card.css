@@ -1,0 +1,27 @@
+.card{
+    display: inline-block;
+    border: 1px solid black;
+    box-shadow: 0 2px 2px #ccc;
+    width: 200px;
+    padding : 20px;
+    margin: 20px;
+  }
+
+.tag-name{
+    background-color: #0095ff;
+}
+
+.tag-description{
+    font-size: 16px;
+}
+
+.questions-number{
+    background-color: #F8F8F8;
+    font-size: 12px;
+}
+
+.questions-week-number{
+    background-color: #F8F8F8;
+    font-size: 12px;
+    margin-right: 10px;
+}

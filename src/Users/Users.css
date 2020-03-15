@@ -1,0 +1,11 @@
+
+.user-cards{
+    display: inline-flex;
+    margin-top: 10px;
+}
+
+.user-card{
+    width: 220px;
+    height: 400px;
+    margin-left: 40px;
+}
