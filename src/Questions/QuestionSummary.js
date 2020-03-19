@@ -17,17 +17,17 @@ export default function QuestionSummary({title, description, tags, viewCount, an
                         <span>הצבעות</span>
                     </div>
                     <div className="answered">
-                        <strong className="answered-num">{answersCount}</strong>
+                        <span className="answered-num">{answersCount}</span>
                         <span>תשובות</span>
                     </div>
                     <div className="views">
-                        <span>{viewCount}</span>
+                        <span>{"מספר צפיות: " + viewCount}</span>
                     </div>
                 </div>
             </div>
             <div className="summary">
                 <span className='question-title'>{title}</span>
-                <span className='question-brief'>{description}</span>
+                <span className='question-brief'>{description + description + description}</span>
                 <div className="question-tags">
                     {tagSpans}
                 </div>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import TagCard from './TagCard';
 import './Tags.css';
 
-export default function Tags({displayQuestions}){
+export default function Tags({}){
 
     const [tags, setTags] = useState([]);
 
@@ -18,11 +18,11 @@ export default function Tags({displayQuestions}){
 
     const TagCards = tags.map((tag, i) =>
         <TagCard name={tag.tag_name} description={tag.tag_description}
-            questionsCount={tag.tag_questions_number} displayQuestions={displayQuestions} key={i}/>);
+            questionsCount={tag.tag_questions_number} key={i}/>);
 
 
     return(
-        <div>
+        <div className='tags-main'>
             {TagCards}
         </div>
     );

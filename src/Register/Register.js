@@ -30,6 +30,8 @@ export default function Register() {
         }
     });
   }
+  const [modal, setIsModalOpen] = useState(true);
+  const toggle = () => setIsModalOpen(!modal);
 
   return (
       <div className="register">

@@ -1,0 +1,20 @@
+.questions-list-container{
+    height: 100%;
+    background-color: burlywood;
+}
+
+.questions-list-main{
+}
+
+.questions{
+    margin-right: 350px;
+}
+
+.autocomplete{
+    width: 300px;
+    height: 20px;
+}
+
+.questions-filter{
+    margin-top: 20px;
+}

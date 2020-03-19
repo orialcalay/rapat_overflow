@@ -1,14 +1,33 @@
 import React, {useState, useEffect} from 'react';
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import QuestionSummary from './QuestionSummary';
 import Filters from './Filters';
-import './Questions.css';
+import './QuestionList.css';
 import { useLocation } from "react-router-dom";
+import { Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-export default function Questions(){
 
+const useStyles = makeStyles({
+    root: {
+      background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+      border: 0,
+      borderRadius: 3,
+      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+      color: 'white',
+      height: 30,
+      width: 130,
+      padding: '0 30px',
+      marginTop: -80,
+      marginRight: 1230,
+    },
+  });
+
+
+export default function QuestionList(){
 
     const [questions, setQuestions] = useState([]);
     const [filter, setFilter] = useState(true);
@@ -30,13 +49,25 @@ export default function Questions(){
         return 0;
     }
 
+    function compareTimestampToCurrent(timestamp){
+        var current = Date.now();
+        
+    }
+
 
     useEffect(() => {
-        axios.get('http://localhost:5000/questions')
+        // var timestamp = Date.now(); // This would be the timestamp you want to format
+        // var d = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp);
+
+        if(location.state !== undefined){
+            setQuestions(location.state.tagQuestions);
+        }
+        else{
+            axios.get('http://localhost:5000/questions')
                 .then(function (response) {
-                   setQuestions(location.state.tagQuestions);
-                   //setQuestions(response.data)
+                   setQuestions(response.data)
                 });
+        }
     }, []);
 
 
@@ -64,22 +95,20 @@ export default function Questions(){
             tags={question.tags} viewCount={question.view_count} answersCount={question.answers_count}
                 score={question.score} ownerName={question.owner_name} key={i}/>);
 
+    const classes = useStyles();
+    let history = useHistory()
 
     return(
-        <div>
-            {/* <Autocomplete className="autocomplete"
-                id="free-solo-demo"
-                freeSolo
-                options={top100Films.map(option => option.title)}
-                renderInput={params => (
-                    <TextField {...params} label="שאלה..." margin="normal" variant="outlined" />
-                )}
-            /> */}
-            <div className="questions-filter">
-                <Filters sortByFilter={sortByFilter}/>  
-            </div>
-            <div className="questions">
-                {QuestionsSummary}
+        <div className='questions-list-container'>
+            <span className='note'>דע לך : אין הביישן למד!</span>
+            <div className='questions-list-main'>
+                <div className="questions-filter">
+                    <Filters sortByFilter={sortByFilter}/> 
+                    <Button onClick={() => history.push("/questions/add")} className={classes.root}>הוסף שאלה</Button>
+                </div>
+                <div className="questions">
+                    {QuestionsSummary}
+                </div>
             </div>
         </div>
     );

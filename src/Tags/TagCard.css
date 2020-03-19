@@ -8,11 +8,12 @@
   }
 
 .tag-name{
-    background-color: #0095ff;
+    background-color: #D2691E;
 }
 
 .tag-description{
     font-size: 16px;
+    font-family: auto;
 }
 
 .questions-number{
@@ -23,9 +24,9 @@
 .questions-week-number{
     background-color: #F8F8F8;
     font-size: 12px;
-    margin-right: 10px;
 }
 
 .tag-questions{
     display: grid;
+    width: 135px;
 }

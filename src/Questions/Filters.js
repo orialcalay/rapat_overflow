@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { Button } from 'reactstrap';
 import './Filters.css';
+import RapatButton from '../Common/RapatButton';
 
 export default function Filters({sortByFilter}){
     
@@ -9,10 +9,13 @@ export default function Filters({sortByFilter}){
     }
 
     return(
-        <div>
-            <span id='views' onClick={onFilterClicked} className="filter-btn">הנצפה ביותר</span>
+        <div className='filters'>
+            {/* <span id='views' onClick={onFilterClicked} className="filter-btn">הנצפה ביותר</span>
             <span id='votes' onClick={onFilterClicked} className="filter-btn">הפופולרי ביותר</span>
-            <span id='newest' onClick={onFilterClicked} className="filter-btn">החדש ביותר</span>
+            <span id='newest' onClick={onFilterClicked} className="filter-btn">החדש ביותר</span> */}
+            <RapatButton onClicked={onFilterClicked} name='הנצפה ביותר' />
+            <RapatButton onClicked={onFilterClicked} name='הפופולרי ביותר' />
+            <RapatButton onClicked={onFilterClicked} name='החדש ביותר' />
         </div>
     );
 }
