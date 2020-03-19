@@ -4,13 +4,15 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
 import './Register.css';
-
+import RapatModal from '../Modals/RapatModal';
 export default function Register() {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   
   function handleClick(){
 
@@ -29,9 +31,15 @@ export default function Register() {
           
         }
     });
+    setIsModalOpen(true)
+  }
+
+  function handleModalClick(){
+      setIsModalOpen(false);
   }
 
   return (
+
       <div className="register">
         <MuiThemeProvider>
           <div>
@@ -59,11 +67,13 @@ export default function Register() {
              hintText="הקלד סיסמה"
              floatingLabelText="סיסמה"
              onChange = {(event,newValue) => setPassword(newValue)}
-             />
+             /> 
            <br/>
-           <RaisedButton className="raised-button" label="הירשם" primary={true} onClick={handleClick}/>
+           <RaisedButton label="x" className="raised-button" label="הירשם" primary={true} onClick={handleClick}/>
           </div>
+{isModalOpen && <RapatModal handleClick={handleModalClick} title='נרשמת בהצלחה!' body='לביטול הפעולה לחץ cancel'/> }
          </MuiThemeProvider>
       </div>
     );
   }
+

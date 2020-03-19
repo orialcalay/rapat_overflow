@@ -10,3 +10,13 @@
 .modal{
     direction: rtl;
 }
+
+.nameError{
+    color: red;
+    font-size: 15px;
+}
+
+.passwordError{
+    color: red;
+    font-size: 15px;
+}

@@ -6,14 +6,28 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './Login.css';
-
+import RapatModal from '../Modals/RapatModal';
+import { red } from 'color-name';
 export default function Login() {
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [modal, setModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [nameError,setNameError] = useState("");
+  const [passwordError,setPasswordError] = useState("");
+
+ function validate(){
+  if(!userName) {setNameError("must fill name"); return false;}
+  if(!password) {setPasswordError("Must fill password"); return false;}
+  return true;
+
+ }
 
   function userLogin(){
+    const isValid = validate();
+    if (isValid){
+
+    
       axios({
           method: 'post',
           url: 'http://localhost:5000/login',
@@ -24,12 +38,16 @@ export default function Login() {
       })
       .then(function (response) {
           if(response.data == 'True'){
-            toggle();
           }
       });
+      setIsModalOpen(true);
+    }
   }
 
-  const toggle = () => setModal(!modal);
+  /*
+  function handleModalClick(){
+    setIsModalOpen(false);
+} */
 
   return (
     <div className="login">
@@ -40,6 +58,7 @@ export default function Login() {
             floatingLabelText="שם משתמש"
             onChange = {(event,newValue) => setUserName(newValue)}
             />
+          <div className="nameError"> {nameError} </div>
           <br/>
             <TextField
               type="password"
@@ -47,22 +66,12 @@ export default function Login() {
               floatingLabelText="סיסמה"
               onChange = {(event,newValue) => setPassword(newValue)}
               />
+              <div className="passwordError"> {passwordError} </div>
             <br/>
             <RaisedButton className="raised-btn" label="כניסה" primary={true} onClick={userLogin}/>
         </div>
+        {isModalOpen && <RapatModal handleClick={()=>setIsModalOpen(false)} title='התחברת בהצלחה' body='ברוך הבא'/>}
         </MuiThemeProvider>
-        <div className="modal">
-          <Modal isOpen={modal} toggle={toggle}>
-              <ModalHeader toggle={toggle}>הערת אגב</ModalHeader>
-              <ModalBody>
-                נכנסת לאתר בהצלחה!
-              </ModalBody>
-              <ModalFooter>
-                <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
-                <Button color="secondary" onClick={toggle}>Cancel</Button>
-              </ModalFooter>
-          </Modal>
-        </div>
     </div>
   );
 }

@@ -16,6 +16,7 @@ export default function Tags(){
             <TagCard />
             <TagCard />
             <TagCard />
+            <TagCard />
         </div>
     );
 }

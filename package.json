@@ -16,6 +16,7 @@
     "rc-menu": "^8.0.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-inputs-validation": "^4.3.4",
     "react-scripts": "3.4.0",
     "react-tap-event-plugin": "^3.0.3",
     "reactstrap": "^8.4.1"
