@@ -15,6 +15,11 @@ function App() {
   const [isUsersOpen, setIsUsersOpen] = useState(false);
   const [isQuestionsOpen, setIsQuestionsOpen] = useState(false);
   const [isTagsOpen, setIsTagsOpen] = useState(true);
+  const [userName, setUserName] = useState('אינך מחובר כעת');
+
+  function userLoggedIn(name){
+    setUserName(name);
+  }
 
   function clickHandler(value){
     if(value.key == '3'){
@@ -57,10 +62,10 @@ function App() {
   return (
     <div style={{ direction: 'rtl' }}>
       <div>
-        <CommonMenu clickHandler={clickHandler}/>
+        <CommonMenu clickHandler={clickHandler} userName={userName} />
       </div>
       {isTagsOpen && <Tags /> }
-      {isLoginOpen && <Login />}
+      {isLoginOpen && <Login loggedIn={userLoggedIn} />}
       {isRegisterOpen && <Register />}
       {isQuestionsOpen && <Questions/>}
     </div>

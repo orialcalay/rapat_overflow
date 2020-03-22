@@ -8,7 +8,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './Login.css';
 import RapatModal from '../Modals/RapatModal';
 import { red } from 'color-name';
-export default function Login() {
+export default function Login({loggedIn}) {
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -41,6 +41,7 @@ export default function Login() {
           }
       });
       setIsModalOpen(true);
+      loggedIn(userName);
     }
   }
 
@@ -57,11 +58,13 @@ export default function Login() {
             hintText="הקלד שם משתמש"
             floatingLabelText="שם משתמש"
             onChange = {(event,newValue) => setUserName(newValue)}
+            
             />
           <div className="nameError"> {nameError} </div>
           <br/>
             <TextField
               type="password"
+              error
               hintText="הקלד סיסמה"
               floatingLabelText="סיסמה"
               onChange = {(event,newValue) => setPassword(newValue)}

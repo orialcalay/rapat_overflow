@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Menu, { SubMenu, Item as MenuItem, Divider } from 'rc-menu';
 import 'rc-menu/assets/index.css';
+import './CommonMenu.css'
   
   function onOpenChange(value) {
     console.log('onOpenChange', value);
@@ -12,7 +13,7 @@ import 'rc-menu/assets/index.css';
     console.log(info);
   }
 
-export default function CommonMenu({clickHandler}) {
+export default function CommonMenu({clickHandler, userName}) {
     
       const children = [
         <MenuItem key="1" disabled>Rapat Overflow</MenuItem>,
@@ -24,6 +25,7 @@ export default function CommonMenu({clickHandler}) {
         <MenuItem key="3" onClick={clickHandler}>כניסה</MenuItem>,
         <MenuItem key="4" onClick={clickHandler}>הרשמה</MenuItem>,
         <MenuItem key="5" onClick={clickHandler}>שאלות</MenuItem>,
+        <MenuItem className="user" key="6" onClick={clickHandler}>משתמש: {userName}</MenuItem>,
       ];
 
       return (
