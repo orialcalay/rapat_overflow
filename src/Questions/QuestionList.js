@@ -3,28 +3,11 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import QuestionSummary from './QuestionSummary';
+import QuestionReview from './QuestionReview';
 import Filters from './Filters';
 import './QuestionList.css';
 import { useLocation } from "react-router-dom";
-import { Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-
-const useStyles = makeStyles({
-    root: {
-      background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-      border: 0,
-      borderRadius: 3,
-      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      color: 'white',
-      height: 30,
-      width: 130,
-      padding: '0 30px',
-      marginTop: -80,
-      marginRight: 1230,
-    },
-  });
+import RapatButton from '../Common/RapatButton';
 
 
 export default function QuestionList(){
@@ -49,16 +32,7 @@ export default function QuestionList(){
         return 0;
     }
 
-    function compareTimestampToCurrent(timestamp){
-        var current = Date.now();
-        
-    }
-
-
     useEffect(() => {
-        // var timestamp = Date.now(); // This would be the timestamp you want to format
-        // var d = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp);
-
         if(location.state !== undefined){
             setQuestions(location.state.tagQuestions);
         }
@@ -86,28 +60,42 @@ export default function QuestionList(){
     }
 
 
-    const QuestionsSummary = filter ? questions.sort(sortByViews).map((question, i) =>
-        <QuestionSummary title={question.title} description={question.description}
+    const QuestionsReview = filter ? questions.sort(sortByViews).map((question, i) =>
+        <QuestionReview title={question.title} description={question.description}
             tags={question.tags} viewCount={question.view_count} answersCount={question.answers_count}
                 score={question.score} ownerName={question.owner_name} key={i}/>) :
                 questions.sort(sortByScore).map((question, i) =>
-        <QuestionSummary title={question.title} description={question.description}
+        <QuestionReview title={question.title} description={question.description}
             tags={question.tags} viewCount={question.view_count} answersCount={question.answers_count}
                 score={question.score} ownerName={question.owner_name} key={i}/>);
 
-    const classes = useStyles();
-    let history = useHistory()
+    let history = useHistory();
+
+    const top100Films = [
+        { title: 'The Shawshank Redemption', year: 1994 },
+        { title: 'The Godfather', year: 1972 },
+        { title: 'The Godfather: Part II', year: 1974 }];
 
     return(
         <div className='questions-list-container'>
+            <Autocomplete
+                id="free-solo-demo"
+                freeSolo
+                onChange={(event, values) => console.log(values) }
+                options={top100Films.map(option => option.title)}
+                renderInput={params => (
+                <TextField {...params} label="freeSolo" margin="normal" variant="outlined" />
+                )}
+            />
             <span className='note'>דע לך : אין הביישן למד!</span>
             <div className='questions-list-main'>
                 <div className="questions-filter">
                     <Filters sortByFilter={sortByFilter}/> 
-                    <Button onClick={() => history.push("/questions/add")} className={classes.root}>הוסף שאלה</Button>
+                    <RapatButton background='linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)' marginTop='30px'
+                        name='הוסף שאלה' onClicked={() => history.push("/questions/add")}/>
                 </div>
                 <div className="questions">
-                    {QuestionsSummary}
+                    {QuestionsReview}
                 </div>
             </div>
         </div>

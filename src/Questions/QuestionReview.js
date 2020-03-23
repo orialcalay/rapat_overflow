@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import './QuestionSummary.css';
+import './QuestionReview.css';
 
-export default function QuestionSummary({title, description, tags, viewCount, answersCount, score, ownerName}){
+export default function QuestionReview({title, description, tags, viewCount, answersCount, score, ownerName}){
 
     
     const tagSpans = tags.map((tag, i) =>

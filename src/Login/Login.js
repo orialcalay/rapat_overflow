@@ -36,6 +36,9 @@ export default function Login() {
       <MuiThemeProvider>
         <div>
           <TextField
+            label="Error"
+            error 
+            variant="outlined"
             hintText="הקלד שם משתמש"
             floatingLabelText="שם משתמש"
             onChange = {(event,newValue) => setUserName(newValue)}

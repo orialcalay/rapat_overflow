@@ -2,23 +2,7 @@ import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import './TagCard.css';
-import { Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-
-const useStyles = makeStyles({
-    root: {
-      background: '#D2691E',
-      border: 0,
-      borderRadius: 3,
-      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      color: 'white',
-      height: 30,
-      width: 130,
-      padding: '0 30px',
-      marginRight: 5,
-    },
-  });
+import RapatButton from '../Common/RapatButton';
 
 
 export default function TagCard({name, description, questionsCount}){
@@ -36,12 +20,9 @@ export default function TagCard({name, description, questionsCount}){
                 });
     }
 
-    const classes = useStyles();
-
     return(
         <div className="card">
-            <Button onClick={onClick} className={classes.root}>{name}</Button>
-            {/* <span className="tag-name" onClick={onClick}>{name}</span> */}
+            <RapatButton background='#D2691E' onClicked={onClick} name={name} />
             <p className="tag-description">{description}</p>
             <div className='tag-questions'>
                 <span className="questions-number">{'מספר שאלות: ' + questionsCount}</span>
