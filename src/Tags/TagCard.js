@@ -10,7 +10,7 @@ export default function TagCard({name, description, questionsCount}){
     let history = useHistory()
 
     function onClick(){
-        var url = `http://localhost:5000/questions/${name}`;
+        var url = `http://167.71.32.57:5000/questions/${name}`;
         axios.get(url)
                 .then(function (response) {
                     history.push({

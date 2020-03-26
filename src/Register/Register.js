@@ -16,7 +16,7 @@ export default function Register() {
 
     axios({
         method: 'post',
-        url: 'http://localhost:5000/addUser',
+        url: 'http://167.71.32.57:5000/addUser',
         data: {
           firstName: firstName,
           lastName: lastName,

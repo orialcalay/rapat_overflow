@@ -63,7 +63,7 @@ export default function AddQuestion(){
         var tagsArray = tags.split(',');
         axios({
             method: 'post',
-            url: 'http://localhost:5000/addQuestion',
+            url: 'http://167.71.32.57:5000/addQuestion',
             data: {
               title: title,
               body: body,

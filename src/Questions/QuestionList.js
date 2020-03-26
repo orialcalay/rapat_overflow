@@ -37,7 +37,7 @@ export default function QuestionList(){
             setQuestions(location.state.tagQuestions);
         }
         else{
-            axios.get('http://localhost:5000/questions')
+            axios.get('http://167.71.32.57:5000/questions')
                 .then(function (response) {
                    setQuestions(response.data)
                 });
@@ -78,7 +78,7 @@ export default function QuestionList(){
 
     return(
         <div className='questions-list-container'>
-            <Autocomplete
+            {/* <Autocomplete
                 id="free-solo-demo"
                 freeSolo
                 onChange={(event, values) => console.log(values) }
@@ -86,7 +86,7 @@ export default function QuestionList(){
                 renderInput={params => (
                 <TextField {...params} label="freeSolo" margin="normal" variant="outlined" />
                 )}
-            />
+            /> */}
             <span className='note'>דע לך : אין הביישן למד!</span>
             <div className='questions-list-main'>
                 <div className="questions-filter">

@@ -1,7 +1,8 @@
 .questions-list-container{
     height: 100%;
-    background-color: burlywood;
-}
+    /* background-color: burlywood;*/
+    background-color: #363537;
+} 
 
 .questions-list-main{
 }

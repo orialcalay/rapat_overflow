@@ -8,7 +8,7 @@ export default function Users(){
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/users')
+        axios.get('http://167.71.32.57:5000/users')
                 .then(function (response) {
                     setUsers(response.data)
                 });

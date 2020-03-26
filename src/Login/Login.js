@@ -16,7 +16,7 @@ export default function Login() {
   function userLogin(){
       axios({
           method: 'post',
-          url: 'http://localhost:5000/login',
+          url: 'http://167.71.32.57:5000/login',
           data: {
               name: userName,
               password: password

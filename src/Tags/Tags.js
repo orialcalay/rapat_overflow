@@ -9,7 +9,7 @@ export default function Tags({}){
 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/tags')
+        axios.get('http://167.71.32.57:5000/tags')
                 .then(function (response) {
                     setTags(response.data);
                 });
